@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/output.css" rel="stylesheet">
+    <title>Lista de Usuarios</title>
+</head>
+<body class="bg-gray-900 flex h-screen">
+    
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 p-4 h-full">
+        <ul>
+            <li><a href="{{ url_for('dashboard') }}" class="text-white block p-2">Dashboard</a></li>
+            <li><a href="{{ url_for('logout') }}" class="text-white block p-2">Sign Out</a></li>
+        </ul>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <div class="flex-1 p-6 overflow-auto">
+        <h1 class="text-white text-xl mb-4">Lista de Usuarios</h1>
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-white border border-gray-700">
+                <thead>
+                    <tr class="bg-gray-800">
+                        <th class="border px-4 py-2">ID</th>
+                        <th class="border px-4 py-2">Usuario</th>
+                        <th class="border px-4 py-2">Correo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr class="bg-gray-700 hover:bg-gray-600">
+                        <td class="border px-4 py-2">{{ user.id }}</td>
+                        <td class="border px-4 py-2">{{ user.username }}</td>
+                        <td class="border px-4 py-2">{{ user.email }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
